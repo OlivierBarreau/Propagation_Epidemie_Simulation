@@ -1,4 +1,35 @@
-body {}
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+.divParam {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.parametres {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-left: 10px;
+    padding: 3px;
+    justify-content: space-evenly;
+}
+
+#start {
+    cursor: pointer;
+    margin: 5px;
+}
+
+.deroulement {
+    display: flex;
+    width: 700px;
+    height: 330px;
+    background-color: gray;
+    margin-left: 10px;
+    margin-top: 10px;
+}
 
 .fenetre {
     display: flex;

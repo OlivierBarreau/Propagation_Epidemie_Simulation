@@ -3,14 +3,31 @@
 
 <head>
     <title> Simulation propagation des Epidemies </title>
+
     <link rel="stylesheet" href="epidemie.css">
-    <script src='epidemie.js'></script>
+    <link rel="shortcut icon" href="#">
+    <!-- <script src='epidemie.js'></script> -->
 </head>
 
 <body>
     <div class='fenetre'>
         <canvas id="myCanvas" width="400" height="400"></canvas>
     </div>
-</body>
+    <div>
+        <div class="divParam">
+            <img src="ImageModeleSIR.png" alt="Modele SIR ">
+            <div class="parametres">
+                <p> Population initiale : </p><input type="number" id="PopulationInitial" min="1" max="2500" value="1000">
+                <p> Nombre d'infections initiales: </p><input type="number" id="InfectionInitial" min="1" max="2500" value="5">
+                <p> Nombre de jours de recuperation : </p><input type="number" id="NbJourRecup" min="7" max="14" value="10">
+                <button onclick="start()" id="start"><div id="bouton"><span>Start Simulation &#x1F846</span></div>
+            </div>
+            
+        </div>
+        <div class="deroulement">
 
+        </div>
+    </div>
+</body>
+    <script src='epidemie.js'></script>
 </html>
