@@ -24,14 +24,24 @@ body {
 
 .deroulement {
     display: flex;
+    flex-direction: column;
     width: 700px;
     height: 330px;
     background-color: gray;
     margin-left: 10px;
     margin-top: 10px;
+    padding: 10px;
 }
 
 .fenetre {
+    display: flex;
+    border: 1px solid black;
+    width: 600px;
+    height: 600px;
+    justify-content: left;
+}
+
+.graphe {
     display: flex;
     border: 1px solid black;
     width: 600px;

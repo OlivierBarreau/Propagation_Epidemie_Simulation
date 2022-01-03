@@ -2,10 +2,15 @@ var fenetreBoule = document.getElementById("myCanvas").getContext("2d");
 
 var population = 1000;
 var nombreinfectionInitiale = 5;
+var nombreinfection = nombreinfectionInitiale;
 var nbJourRecup = 10;
 var canvas_Largeur = fenetreBoule.canvas.width;
 var canvas_Hauteur = fenetreBoule.canvas.height;
 var perimetreInfections = 5;
+var infectionP = 2;
+
+document.getElementById("popSaine").innerHTML = population;
+document.getElementById("popInf").innerHTML = nombreinfection;
 
 function start() {
     document.getElementById("PopulationInitial").value = Math.floor(document.getElementById("PopulationInitial").value)
@@ -59,18 +64,31 @@ function repeat() {
     animation();
     infectionCheck();
     fenetreBoule.beginPath();
+
+    document.getElementById("popSaine").innerHTML = population;
     window.setTimeout(repeat, 25);
 }
 
 function infectionCheck() {
-
+    for (var i = 0; i < particlePositionX.length; i++) {
+        if (particleSIR[i] == 1) {
+            for (j = 0; j < particlePositionX.length; j++) {
+                if (particleSIR[j] == 0) {
+                    if (Math.pow(particlePositionX[i] - particlePositionX[j], 2) + Math.pow(particlePositionY[i] - particlePositionY[j], 2) < Math.pow(perimetreInfections, 2) && Math.random() < 1 - Math.pow(1 - infectionP, 0.2)) {
+                        particleSIR[j] = 1;
+                    }
+                    particleAnimation[j] = 0;
+                }
+            }
+        }
+    }
 }
 
 //Animation des particules infectes
 function animation() {
     for (var i = 0; i < particleSIR.length; i++) {
         if (particleSIR[i] == 1) { fenetreBoule.strokeStyle = "#EC4444" }
-        if (particleSIR[i] == 3) { cInf.strokeStyle = "#D6EA50" }
+        if (particleSIR[i] == 2) { fenetreBoule.strokeStyle = "#0F7F25" }
         if (particleSIR[i] != 0 && particleSIR[i] != 2) {
             fenetreBoule.beginPath();
             if (particleAnimation[i] > 0 && particleAnimation[i] <= 3 * perimetreInfections) {
