@@ -166,7 +166,9 @@ function grapheTest() {
             labels: label,
             datasets: [{
                 data: valTest,
+                backgroundColor: "#9D0407",
             }],
+            hoverBorderWidth: 3,
         };
 
         var config = {
@@ -176,7 +178,7 @@ function grapheTest() {
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'top',
+                        display: false,
                     },
                     title: {
                         display: true,
