@@ -1,7 +1,5 @@
 import '../ExempleSimulation/epidemic-simulator-main/chocolate.js';
 
-
-
 var nombreSimulation = 1000;
 var valPopSaine = [];
 

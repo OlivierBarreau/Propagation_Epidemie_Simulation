@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="epidemie.css">
     <link rel="shortcut icon" href="#">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js'></script>
     <!-- <script src='epidemie.js'></script> -->
 </head>
 
@@ -20,16 +21,37 @@
                 <p> Population initiale : </p><input type="number" id="PopulationInitial" min="1" max="2500" value="1000">
                 <p> Nombre d'infections initiales: </p><input type="number" id="InfectionInitial" min="1" max="2500" value="5">
                 <p> Nombre de jours de recuperation : </p><input type="number" id="NbJourRecup" min="7" max="14" value="10">
-                <button onclick="start()" id="start"><div id="bouton"><span>Start Simulation &#x1F846</span></div>
+                <button onclick="start()" id="start"><div id="bouton"><span>Lancer Simulation &#x1F846</span></div></button>
+                <div>
+                    <p>Test </p>
+                    <p> Nombre de simulation : </p><input type="number" id="NbTest" min="7" max="14" value="100">
+                </div>
+
+                <button onclick="test()" id="test"><div id="bouton"><span>Lancer test &#x1F846</span></div></button>
+
             </div>
-            
+
         </div>
         <div class="deroulement">
-            <p> Population Saine : <a id = "popSaine"></a></p>
-            <p> Population infectee: <a id = "popInf"></a> </p>
-            <p> Population guerrie: <a id = "popGuer"></a> </p>
+            <div class="info">
+                <p> Population Saine :
+                    <a id="popSaine"></a>
+                </p>
+                <p> Population infectee:
+                    <a id="popInf"></a>
+                </p>
+                <p> Population guerrie:
+                    <a id="popGuer"></a>
+                </p>
+            </div>
+            <div class="graphe">
+                <canvas id="grapheTest"></canvas>
+            </div>
+
         </div>
     </div>
 </body>
-    <script src='epidemie.js'></script>
+<script src='epidemie.js'></script>
+<script type=" " src='graphe.js'></script>
+
 </html>
