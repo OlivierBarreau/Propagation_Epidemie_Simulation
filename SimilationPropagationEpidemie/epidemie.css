@@ -14,6 +14,7 @@ body {
     border: 1px solid black;
     margin-left: 10px;
     padding: 3px;
+    flex: 5;
     justify-content: space-evenly;
 }
 
@@ -22,14 +23,9 @@ body {
     margin: 5px;
 }
 
-.deroulement {
-    display: flex;
-    flex-direction: column;
-    width: 700px;
-    height: 330px;
-    margin-left: 10px;
-    margin-top: 10px;
-    padding: 10px;
+#test {
+    cursor: pointer;
+    margin: 5px;
 }
 
 .fenetre {
@@ -40,17 +36,59 @@ body {
     justify-content: left;
 }
 
-.graphe {
+.graphique {
     display: flex;
-    flex: 3;
-    flex-direction: column;
+    flex-direction: row;
+    margin-top: 10px;
+    padding: 10px;
     border: 1px solid black;
+}
+
+.graph {
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.graphInfo {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.deroulement {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
 }
 
 .info {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    flex: 1;
-    background-color: gray;
+    width: auto;
+    height: auto;
+}
+
+.infoTest {
+    display: flex;
+    justify-content: center;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.Reglage_Info {
+    display: flex;
+    flex-direction: column;
+}
+
+.simulationEntier {
+    display: flex;
+    flex-direction: row;
 }

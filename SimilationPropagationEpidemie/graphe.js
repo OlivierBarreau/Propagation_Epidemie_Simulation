@@ -1,7 +1,7 @@
 var ctx = document.getElementById("grapheTest").getContext('2d');
 ctx.fillStyle = "Black";
 var label = [];
-
+GameObject.Find()
 for (var i = 0; i < 100; i++) {
     label[i] = i;
 }

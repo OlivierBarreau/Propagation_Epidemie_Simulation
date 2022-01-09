@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <title> Simulation propagation des Epidemies </title>
 
+    <meta charset="utf-8">
     <link rel="stylesheet" href="epidemie.css">
     <link rel="shortcut icon" href="#">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js'></script>
@@ -11,47 +12,85 @@
 </head>
 
 <body>
-    <div class='fenetre'>
-        <canvas id="myCanvas" width="400" height="400"></canvas>
-    </div>
-    <div>
-        <div class="divParam">
-            <img src="ImageModeleSIR.png" alt="Modele SIR ">
-            <div class="parametres">
-                <p> Population initiale : </p><input type="number" id="PopulationInitial" min="1" max="2500" value="1000">
-                <p> Nombre d'infections initiales: </p><input type="number" id="InfectionInitial" min="1" max="2500" value="5">
-                <p> Nombre de jours de recuperation : </p><input type="number" id="NbJourRecup" min="7" max="14" value="10">
-                <button onclick="start()" id="start"><div id="bouton"><span>Lancer Simulation &#x1F846</span></div></button>
-                <div>
-                    <p>Test </p>
-                    <p> Nombre de simulation : </p><input type="number" id="NbTest" min="7" max="14" value="100">
+    <div class="page">
+        <div class="simulationEntier">
+            <div class='fenetre'>
+                <canvas id="myCanvas" width="400" height="400"></canvas>
+            </div>
+            <div class="Reglage_Info">
+                <div class="divParam">
+                    <img src="ImageModeleSIR.png" width="400" height="200" alt="Modele SIR ">
+                    <div class="parametres">
+                        <p> Population initiale : </p><input type="number" id="PopulationInitial" min="1" max="2500" value="1000">
+                        <p> Nombre d'infections initiales: </p><input type="number" id="InfectionInitial" min="1" max="2500" value="5">
+                        <p> Nombre de jours de récupération :</p>
+                        <p> <i>compris entre ... et 15 jours </i> </p>
+                        <input type="number" id="NbJourRecup" min="7" max="14" value="10">
+                        <button onclick="start()" id="start"><div id="bouton"><span>Lancer Simulation &#x1F846</span></div></button>
+                        <div>
+                            <p>Test </p>
+                            <p> Nombre de simulation : </p><input type="number" id="NbTest" min="1" max="100" value="100">
+                        </div>
+                        <button onclick="test()" id="test"><div id="bouton"><span>Lancer Test &#x1F846</span></div></button>
+
+                    </div>
+
+                </div>
+                <div class="deroulement">
+
+                    <div class="info">
+                        <p> Population Saine :
+                            <a id="popSaine"></a>
+                        </p>
+                        <p> Population infectee:
+                            <a id="popInf"></a>
+                        </p>
+                        <p> Population guerrie:
+                            <a id="popGuer"></a>
+                        </p>
+                    </div>
+
+                    <div class="infoTest">
+                        <p> Numero test en cours :
+                            <a id="nbTest"></a>
+                        </p>
+                    </div>
+
                 </div>
 
-                <button onclick="test()" id="test"><div id="bouton"><span>Lancer test &#x1F846</span></div></button>
-
             </div>
 
         </div>
-        <div class="deroulement">
-            <div class="info">
-                <p> Population Saine :
-                    <a id="popSaine"></a>
-                </p>
-                <p> Population infectee:
-                    <a id="popInf"></a>
-                </p>
-                <p> Population guerrie:
-                    <a id="popGuer"></a>
-                </p>
-            </div>
-            <div class="graphe">
+
+        <div class="graphique">
+            <div class="graph">
+                <p>Graphique du Test</p>
                 <canvas id="grapheTest"></canvas>
             </div>
+            <div class="graphInfo">
+                <p> Min :
+                    <a id="minPS"></a>
+                </p>
+                <p> Max :
+                    <a id="maxPS"></a>
+                </p>
+                <p> Moyenne :
+                    <a id="moyPS"></a>
+                </p>
+                <p> Variance :
+                    <a id="varPS"></a>
+                </p>
+                <p> Écart type:
+                    <a id="ecartTPS"></a>
+                </p>
+            </div>
 
         </div>
+
     </div>
+
 </body>
 <script src='epidemie.js'></script>
-<script type=" " src='graphe.js'></script>
+<!-- <script type=" " src='graphe.js'></script> -->
 
 </html>

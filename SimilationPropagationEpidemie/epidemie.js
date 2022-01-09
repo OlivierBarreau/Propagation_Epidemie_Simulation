@@ -1,4 +1,5 @@
 var fenetreBoule = document.getElementById("myCanvas").getContext("2d");
+var ctxGraphe = document.getElementById("grapheTest").getContext('2d');
 
 var population = 1000;
 var nombreinfectionInitiale = 5;
@@ -11,6 +12,8 @@ var infectionP = 0.2;
 var time = 0;
 var nombreTest = document.getElementById("NbTest").value;
 var valTest = [];
+var bolTest = false;
+var bolGraphe = false;
 var nombreTestEffectue = 0;
 
 function start() {
@@ -66,12 +69,16 @@ function repeat() {
     animation();
     infectionCheck();
     checkNumber();
-    test();
+    if (bolTest == true) {
+        test();
+    }
+    grapheTest();
     fenetreBoule.beginPath();
 
     document.getElementById("popSaine").innerHTML = infectionRecord[time - 1][0];
     document.getElementById("popInf").innerHTML = population - infectionRecord[time - 1][0] - infectionRecord[time - 1][2];
     document.getElementById("popGuer").innerHTML = infectionRecord[time - 1][2];
+    document.getElementById("nbTest").innerHTML = nombreTestEffectue;
     window.setTimeout(repeat, 33);
 }
 
@@ -83,7 +90,7 @@ function infectionCheck() {
                     if (Math.pow(particlePositionX[i] - particlePositionX[j], 2) + Math.pow(particlePositionY[i] - particlePositionY[j], 2) < Math.pow(perimetreInfections, 2) && Math.random() < 1 - Math.pow(1 - infectionP, 0.2)) {
                         particleSIR[j] = 1;
                     }
-                    particleILifeSpan[j] = Math.random() * 100 + 150;
+                    particleILifeSpan[j] = Math.random() * (10 * nbJourRecup) + 150;
                     particleAnimation[j] = 0;
                 }
             }
@@ -130,16 +137,104 @@ function animation() {
 }
 
 function test() {
+    bolTest = true;
     if (nombreTestEffectue == 0) {
         nombreTestEffectue++;
         start();
     }
-    if ((nombreTestEffectue < nombreTest) && (time > 20) && (population - infectionRecord[time - 1][0] - infectionRecord[time - 1][2]) == 0) {
-        valTest[nombreTestEffectue - 1] = infectionRecord[time - 1][0];
+    if ((nombreTestEffectue <= nombreTest) && (time > 20) && (population - infectionRecord[time - 1][0] - infectionRecord[time - 1][2]) == 0) {
+        valTest[nombreTestEffectue - 1] = Math.floor(infectionRecord[time - 1][0]);
         start();
         nombreTestEffectue++;
+        var nombreTestTemp = Math.floor(nombreTest) + 1;
+        if (nombreTestEffectue == nombreTestTemp) {
+            bolTest = false;
+            bolGraphe = true;
+        }
     }
-    console.log(nombreTestEffectue);
-    console.log(valTest);
-    console.log(population - infectionRecord[time - 1][0] - infectionRecord[time - 1][2]);
+}
+
+function grapheTest() {
+    if (bolGraphe == true) {
+        bolGraphe = false;
+        var label = [];
+        for (var i = 0; i < nombreTest; i++) {
+            label[i] = i + 1;
+        }
+
+        var data = {
+            labels: label,
+            datasets: [{
+                data: valTest,
+            }],
+        };
+
+        var config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Graphique du test'
+                    }
+                }
+            },
+        };
+        var grapheTest = new Chart(ctxGraphe, config);
+        var moyenne = 0;
+        var somme = 0;
+        for (let index = 0; index < valTest.length; index++) {
+            somme += valTest[index];
+        }
+        moyenne = somme / valTest.length;
+
+        var sommeCarre = 0;
+        var moyenneCarre = 0;
+        for (let index = 0; index < valTest.length; index++) {
+            sommeCarre += Math.pow(valTest[index], 2);
+        }
+        moyenneCarre = sommeCarre / valTest.length;
+
+        var variance = moyenneCarre - Math.pow(moyenne, 2);
+        var ecartType = Math.sqrt(variance);
+
+        //Minimun
+        var min = 0;
+        for (let index = 0; index < valTest.length; index++) {
+            if (index == 0) {
+                min = valTest[index];
+            }
+            if (index > 0) {
+                if (valTest[index] < min) {
+                    min = valTest[index];
+                }
+            }
+        }
+
+        //Maximun
+        var max = 0;
+        for (let index = 0; index < valTest.length; index++) {
+            if (index == 0) {
+                max = valTest[index];
+            }
+            if (index > 0) {
+                if (valTest[index] > max) {
+                    max = valTest[index];
+                }
+            }
+        }
+
+        document.getElementById("minPS").innerHTML = min;
+        document.getElementById("maxPS").innerHTML = max;
+        document.getElementById("moyPS").innerHTML = moyenne;
+        document.getElementById("varPS").innerHTML = variance;
+        document.getElementById("ecartTPS").innerHTML = ecartType;
+        console.log(valTest);
+    }
+
 }
