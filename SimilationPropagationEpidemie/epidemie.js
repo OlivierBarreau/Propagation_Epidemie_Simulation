@@ -7,7 +7,7 @@ var nombreinfection = nombreinfectionInitiale;
 var nbJourRecup = 10;
 var canvas_Largeur = fenetreBoule.canvas.width;
 var canvas_Hauteur = fenetreBoule.canvas.height;
-var perimetreInfections = 7;
+var rayonInfection = 7;
 var infectionP = 0.2;
 var time = 0;
 var nombreTest = document.getElementById("NbTest").value;
@@ -87,7 +87,8 @@ function infectionCheck() {
         if (particleSIR[i] == 1) {
             for (j = 0; j < particlePositionX.length; j++) {
                 if (particleSIR[j] == 0) {
-                    if (Math.pow(particlePositionX[i] - particlePositionX[j], 2) + Math.pow(particlePositionY[i] - particlePositionY[j], 2) < Math.pow(perimetreInfections, 2) && Math.random() < 1 - Math.pow(1 - infectionP, 0.2)) {
+                    if (Math.pow(particlePositionX[i] - particlePositionX[j], 2) + Math.pow(particlePositionY[i] - particlePositionY[j], 2) <
+                        Math.pow(rayonInfection, 2) && Math.random() < 1 - Math.pow(1 - infectionP, 0.2)) {
                         particleSIR[j] = 1;
                     }
                     particleILifeSpan[j] = Math.random() * (10 * nbJourRecup) + 150;
@@ -119,17 +120,17 @@ function animation() {
         if (particleSIR[i] == 2) { fenetreBoule.strokeStyle = "#0F7F25" }
         if (particleSIR[i] != 0 && particleSIR[i] != 2) {
             fenetreBoule.beginPath();
-            if (particleAnimation[i] > 0 && particleAnimation[i] <= 3 * perimetreInfections) {
+            if (particleAnimation[i] > 0 && particleAnimation[i] <= 3 * rayonInfection) {
                 fenetreBoule.lineWidth = 1.5;
                 fenetreBoule.arc(particlePositionX[i], particlePositionY[i], particleAnimation[i] / 3, 0, Math.PI * 2);
-            } else if (particleSIR[i] == 1 && particleAnimation[i] > 3 * perimetreInfections && particleAnimation[i] < 3.5 * perimetreInfections) {
-                animationConstant = (particleAnimation[i] - 3 * perimetreInfections) / perimetreInfections
+            } else if (particleSIR[i] == 1 && particleAnimation[i] > 3 * rayonInfection && particleAnimation[i] < 3.5 * rayonInfection) {
+                animationConstant = (particleAnimation[i] - 3 * rayonInfection) / rayonInfection
                 fenetreBoule.lineWidth = 3 - animationConstant * 6;
-                fenetreBoule.arc(particlePositionX[i], particlePositionY[i], perimetreInfections + animationConstant * 4, 0, Math.PI * 2);
+                fenetreBoule.arc(particlePositionX[i], particlePositionY[i], rayonInfection + animationConstant * 4, 0, Math.PI * 2);
             }
             fenetreBoule.stroke();
             particleAnimation[i]++;
-            if (particleAnimation[i] > perimetreInfections * 3.5 && particleILifeSpan[i] > particleAnimation[i] * 4) {
+            if (particleAnimation[i] > rayonInfection * 3.5 && particleILifeSpan[i] > particleAnimation[i] * 4) {
                 particleAnimation[i] = -10;
             }
         }
