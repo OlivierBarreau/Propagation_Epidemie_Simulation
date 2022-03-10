@@ -18,4 +18,6 @@ Après avoir recueilli ces données, nous avons cherché et calculé les valeurs
 - La moyenne des personnes non infectées
 - La variance
 - L'écart-type
-Nous avons ensuite fait des calculs pour tester la fiabilité du modèle de propagation de la simulation. 
+Nous avons ensuite fait des calculs pour tester la fiabilité du modèle de propagation de la simulation.
+
+Le site décrivant l'intégralité du projet : https://mct-py.fr/MathES3/
