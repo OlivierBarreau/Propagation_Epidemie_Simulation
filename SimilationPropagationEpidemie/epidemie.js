@@ -20,6 +20,7 @@ function start() {
     document.getElementById("PopulationInitial").value = Math.floor(document.getElementById("PopulationInitial").value)
     document.getElementById("InfectionInitial").value = Math.floor(document.getElementById("InfectionInitial").value)
     population = document.getElementById("PopulationInitial").value;
+    nombreTest = document.getElementById("NbTest").value;
     nombreinfectionInitiale = document.getElementById("InfectionInitial").value;
     particlePositionX = [];
     particlePositionY = [];
