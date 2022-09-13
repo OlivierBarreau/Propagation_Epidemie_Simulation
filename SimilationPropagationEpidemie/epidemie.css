@@ -1,49 +1,14 @@
 body {
-    /*display: flex;
-    flex-direction: row;*/
     margin: 0;
 }
 
-nav {
-    display: flex;
-    flex-direction: row;
-    color: white;
-    top: 0;
-    position: sticky;
+.simulationEntier {
+    height: 100vh;
+    background-color: #22185d;
+    box-sizing: border-box;
     padding: 5px;
-    background-color: rgb(2, 10, 34);
-    font-family: 'Courier New', Courier, monospace;
-}
-
-nav li {
     display: flex;
     flex-direction: row;
-    margin-left: 500px;
-}
-
-.divParam {
-    /*display: inline-flex;
-    flex-direction: row;*/
-}
-
-.parametres {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    margin-left: 10px;
-    padding: 3px;
-    flex: 5;
-    justify-content: space-evenly;
-}
-
-#start {
-    cursor: pointer;
-    margin: 5px;
-}
-
-#test {
-    cursor: pointer;
-    margin: 5px;
 }
 
 .fenetre {
@@ -51,19 +16,70 @@ nav li {
     border: 1px solid black;
     width: 600px;
     height: 600px;
+    background-color: black;
+}
+
+.Reglage_Info {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.parametres {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 0px 10px 5px 10px;
+    padding: 3px;
+    flex: 5;
+    justify-content: center;
+    background-color: #504180;
+    margin-top: 0px;
+}
+
+.titre {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.parametres-simulation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.parametres-simulation p {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+.parametres-simul-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.parametres-test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .graphique {
-    height: 90vh;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
     padding: 5px;
-    /*margin-top: 10px;
-    
-    border: 1px solid black;*/
-    background-color: white;
+    background-color: #22185d;
     color: white;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .graph {
@@ -71,7 +87,9 @@ nav li {
     flex-direction: column;
     flex: 5;
     border: 1px solid black;
+    background-color: #504180;
     text-align: center;
+    font-weight: bold;
 }
 
 .graphInfo {
@@ -79,15 +97,31 @@ nav li {
     display: flex;
     flex-direction: column;
     padding: 10px;
+    background-color: #504180;
+    border-radius: 10px;
+    margin: 0px 10px 10px 10px;
 }
 
 .deroulement {
-    display: flex;
-    flex-direction: column;
-    background-color: gray;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    background-color: #504180;
+    border: 2px solid #ffdb6a;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 3px;
+    font-size: 15px;
 }
 
-.info {
+.deroulement a {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* .info {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -95,27 +129,49 @@ nav li {
     height: auto;
 }
 
+.info p {
+    display: flex;
+}
+
 .infoTest {
+    display: flex;
+    justify-content: center;
+} */
+
+h3 {
     display: flex;
     justify-content: center;
 }
 
 
-/*.page {
-    display: flex;
-    flex-direction: column;
-}*/
+/*Bouton*/
 
-.Reglage_Info {
-    /*display: flex;
-    flex-direction: column;*/
+#start {
+    cursor: pointer;
+    margin: 5px;
+    width: 300px;
+    align-items: center;
+    display: flex;
+    color: #22185d;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    justify-content: center;
+    background-color: #ffdb6a;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.simulationEntier {
-    height: 90vh;
-    background-color: white;
-    box-sizing: border-box;
-    padding: 5px;
+#test {
+    cursor: pointer;
+    margin: 5px;
+    width: 300px;
+    align-items: center;
     display: flex;
-    flex-direction: row;
+    color: #22185d;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    justify-content: center;
+    background-color: #ffdb6a;
+    font-family: 'Courier New', Courier, monospace;
 }

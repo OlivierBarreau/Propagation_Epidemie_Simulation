@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <!--
     <nav>
         <img src="PNGPIX-COM-covid19-PNG-Transparent-Image.png" width="70" alt="Modele SIR " />
         <p> Propagation des épidémies - Modélisations mathématiques </p>
@@ -19,51 +20,51 @@
             <ul>home</ul>
             <ul>about</ul>
         </li>
-    </nav>
+    </nav> -->
     <section class="simulationEntier">
         <div class='fenetre'>
             <canvas id="myCanvas" width="400" height="400"></canvas>
         </div>
         <div class="Reglage_Info">
-            <div class="divParam">
+            <div class="parametres">
                 <!--<img src="ImageModeleSIR.png" width="400" height="200" alt="Modele SIR ">-->
-                <div class="parametres">
-                    <p> Population initiale : </p><input type="number" id="PopulationInitial" min="1" max="2500" value="1000">
-                    <p> Nombre d'infections initiales: </p><input type="number" id="InfectionInitial" min="1" max="2500" value="5">
-                    <p> Nombre de jours de récupération :</p>
-                    <p> <i>compris entre ... et 15 jours </i> </p>
-                    <input type="number" id="NbJourRecup" min="7" max="14" value="10">
-                    <button onclick="start()" id="start"><div id="bouton"><span>Lancer Simulation &#x1F846</span></div></button>
-                    <div>
-                        <p>Test </p>
-                        <p> Nombre de simulation : </p><input type="number" id="NbTest" min="1" max="100" value="100">
+                <div class="parametres-simulation">
+                    <div class="titre">
+                        Propagation des épidémies - Modélisations mathématiques
                     </div>
-                    <button onclick="test()" id="test"><div id="bouton"><span>Lancer Test &#x1F846</span></div></button>
+                    <h3> Simulation </h3>
+                    <div class="parametres-simul-box">
+                        <p> Population initiale </p>
+                        <input type="number" id="PopulationInitial" min="1" max="2500" value="1000">
+                        <p> Nombre d'infections initiales </p>
+                        <input type="number" id="InfectionInitial" min="1" max="2500" value="5">
+                        <p> Nombre de jours de récupération <i> (entre 7 et 15 jours) </i></p>
+                        <input type="number" id="NbJourRecup" min="7" max="14" value="10">
 
+                    </div>
+                    <button onclick="start()" id="start"><div id="bouton"><span>Lancer Simulation </span></div></button>
+                </div>
+
+                <div class="parametres-test">
+                    <h3>Test </h3>
+                    <p> Nombre de simulation <input type="number" id="NbTest" min="1" max="100" value="10"> </p>
+
+                    <button onclick="test()" id="test"><div id="bouton"><span>Lancer Test </span></div></button>
                 </div>
 
             </div>
             <div class="deroulement">
-
-                <div class="info">
-                    <p> Population Saine :
-                        <a id="popSaine"></a>
-                    </p>
-                    <p> Population infectee:
-                        <a id="popInf"></a>
-                    </p>
-                    <p> Population guerrie:
-                        <a id="popGuer"></a>
-                    </p>
-                </div>
-
-                <div class="infoTest">
-                    <p> Numero test en cours :
-                        <a id="nbTest"></a>
-                    </p>
-                </div>
-
+                <p> Numéro du test </p>
+                <p> Population Saine </p>
+                <p> Population infectée </p>
+                <p> Population guérrie </p>
+                <a id="nbTest"></a>
+                <a id="popSaine"></a>
+                <a id="popInf"></a>
+                <a id="popGuer"></a>
             </div>
+
+        </div>
 
     </section>
 
@@ -73,6 +74,7 @@
             <canvas id="grapheTest"></canvas>
         </div>
         <div class="graphInfo">
+            <h3> Résultats </h3>
             <p> Min :
                 <a id="minPS"></a>
             </p>
