@@ -14,6 +14,7 @@ var nombreTest = document.getElementById("NbTest").value;
 var valTest = [];
 var bolTest = false;
 var bolGraphe = false;
+var graphe;
 var nombreTestEffectue = 0;
 
 function start() {
@@ -44,6 +45,26 @@ function start() {
         }
     }
     repeat();
+}
+
+function reset() {
+    population = 1000;
+    nombreinfectionInitiale = 5;
+    nombreinfection = nombreinfectionInitiale;
+    nbJourRecup = 10;
+    nombreTestEffectue = 0;
+    rayonInfection = 7;
+    infectionP = 0.2;
+    time = 0;
+    nombreTest = document.getElementById("NbTest").value;
+
+    document.getElementById("minPS").innerHTML = 0;
+    document.getElementById("maxPS").innerHTML = 0;
+    document.getElementById("moyPS").innerHTML = 0;
+    document.getElementById("varPS").innerHTML = 0;
+    document.getElementById("ecartTPS").innerHTML = 0;
+    graphe.destroy();
+    test();
 }
 
 function motion() {
@@ -189,7 +210,7 @@ function grapheTest() {
                 }
             },
         };
-        var grapheTest = new Chart(ctxGraphe, config);
+        graphe = new Chart(ctxGraphe, config);
         var moyenne = 0;
         var somme = 0;
         for (let index = 0; index < valTest.length; index++) {
@@ -238,7 +259,6 @@ function grapheTest() {
         document.getElementById("moyPS").innerHTML = moyenne;
         document.getElementById("varPS").innerHTML = variance;
         document.getElementById("ecartTPS").innerHTML = ecartType;
-        console.log(valTest);
     }
 
 }

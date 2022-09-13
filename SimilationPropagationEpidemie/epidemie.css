@@ -120,23 +120,10 @@ body {
     justify-content: center;
 }
 
-
-/* .info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: auto;
-    height: auto;
-}
-
-.info p {
-    display: flex;
-}
-
-.infoTest {
+.deroulement p {
     display: flex;
     justify-content: center;
-} */
+}
 
 h3 {
     display: flex;
@@ -174,4 +161,25 @@ h3 {
     justify-content: center;
     background-color: #ffdb6a;
     font-family: 'Courier New', Courier, monospace;
+}
+
+#réinitialisation {
+    cursor: pointer;
+    margin: 5px;
+    width: 200px;
+    display: flex;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid #ffdb6a;
+    border-radius: 10px;
+    justify-content: center;
+    background-color: #504180;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.reset-Box {
+    display: flex;
+    justify-content: end;
+    margin-top: 40px;
 }
